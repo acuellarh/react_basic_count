@@ -1,20 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      name: "",
+      terms: false
+    }
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div className="App">     
+        <h1>Hola Mundo</h1>
+        <input type="text" value={this.state.name} onChange={this.updateName.bind(this)}/>
+        <div>
+          <label>
+            <input type="checkbox" checked={this.state.terms} onClick={this.updateTerms.bind(this)}/>Acepto los términos
+          </label>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <button onClick={this.sayHi.bind(this)}>Say Hi!</button>
       </div>
     );
+  }
+
+  updateTerms(event){
+    this.setState({
+      terms: event.target.checked
+    });
+  }
+
+  updateName(event){
+    this.setState({
+      name: event.target.value
+    });
+  }
+
+  sayHi(){
+    if (this.state.terms){
+      alert('Hola ' + this.state.name);
+    } else {
+      alert('Debes aceptar los términos');
+    }
   }
 }
 
