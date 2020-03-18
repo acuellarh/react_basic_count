@@ -5,30 +5,21 @@ class App extends Component {
   constructor(){
     super();
     this.state = {
-      name: "",
-      terms: false
+      name: ""     
     }
   }
 
   render() {
     return (
-      <div className="App">     
-        <h1>Hola Mundo</h1>
+      <div className="App">       
         <input type="text" value={this.state.name} onChange={this.updateName.bind(this)}/>
         <div>
           <label>
-            <input type="checkbox" checked={this.state.terms} onClick={this.updateTerms.bind(this)}/>Acepto los términos
+            <input type="text" value={this.state.name.length} onChange={this.updateName.bind(this)}/>            
           </label>
-        </div>
-        <button onClick={this.sayHi.bind(this)}>Say Hi!</button>
+        </div>        
       </div>
     );
-  }
-
-  updateTerms(event){
-    this.setState({
-      terms: event.target.checked
-    });
   }
 
   updateName(event){
@@ -37,13 +28,6 @@ class App extends Component {
     });
   }
 
-  sayHi(){
-    if (this.state.terms){
-      alert('Hola ' + this.state.name);
-    } else {
-      alert('Debes aceptar los términos');
-    }
-  }
 }
 
 export default App;
